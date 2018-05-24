@@ -1,0 +1,425 @@
+@font-face {
+font-family: 'Exo20Light';
+src: url('Exo20-Light.eot');
+src: url('Exo20-Light.eot?#iefix') format('embedded-opentype'),
+url('Exo20-Light.woff') format('woff'),
+url('Exo20-Light.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}
+
+.total {
+	font-size: 22px;
+	font-weight: 400;
+}
+
+ul {
+	list-style-type: none;
+}
+
+input {
+	outline: none;
+}
+
+input.value{
+	height: 33px;
+    font-size: 33px;
+    border: 1px solid;
+    width: 60%;
+    border-color: #dddddd;
+}
+
+input[type="range"] { 
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+    border-radius: 0; /* iOS */
+}
+
+.grey::-webkit-slider-runnable-track {
+    background: #ddd;
+}
+
+/*
+ * 1. Set to 0 width and remove border for a slider without a thumb
+ */
+.grey::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; /* 1 */
+    height: 40px;
+    background: #fff;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    border: 2px solid #999; /* 1 */
+}
+
+.grey::-moz-range-track {
+    height: 40px;
+    background: #ddd;
+}
+
+.grey::-moz-range-thumb {
+    background: #fff;
+    height: 40px;
+    width: 20px;
+    border: 3px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    box-sizing: border-box;
+}
+
+.grey::-ms-fill-lower { 
+    background: dodgerblue;
+}
+
+.grey::-ms-thumb { 
+    background: #fff;
+    border: 2px solid #999;
+    height: 40px;
+    width: 20px;
+    box-sizing: border-box;
+}
+
+.grey::-ms-ticks-after { 
+    display: none; 
+}
+
+.grey::-ms-ticks-before { 
+    display: none; 
+}
+
+.grey::-ms-track { 
+    background: #ddd;
+    color: transparent;
+    height: 40px;
+    border: none;
+}
+
+.grey::-ms-tooltip { 
+    display: none;
+}
+
+
+
+.container{
+    width: 800px;
+    margin: auto;
+    font-family: 'Exo20Light';
+}
+
+.container-course, .container-full-price, .container-term-of-delay, .container-prepaid-expense, .container-up-tables, .container-down-tables {
+	display: flex;
+	justify-content: center;
+}
+
+.container-course div, .container-full-price div, .container-term-of-delay div, .container-prepaid-expense div, .container-up-tables div, .container-down-tables div {
+	padding: 10px;
+}
+
+.box-1-scale {
+	flex: 1;
+	font-size: 22px;
+}
+
+.box-2-scale {
+	flex: 1;
+	font-size: 22px;
+}
+
+.box-3-scale {
+	flex: 1;
+	font-size: 22px;
+}
+
+.box-4 {
+	flex: 1;
+	font-size: 22px;
+}
+
+/*Табле*/
+.box-1-up-tables {
+	flex: 1;
+	font-size: 22px;
+	text-align: center;
+}
+
+.box-2-up-tables {
+	flex: 1;
+	font-size: 22px;
+	text-align: center;
+}
+
+.box-3-up-tables {
+	flex: 1;
+	font-size: 22px;
+	text-align: center;
+}
+
+.box-4-up-tables {
+	flex: 1;
+	font-size: 22px;
+	text-align: center;
+}
+
+.box-1-course {
+	flex: 1;
+	font-size: 22px;
+	text-align: center;
+}
+
+.box-2-course {
+	flex: 2;
+	font-size: 22px;
+	margin-top: 15px;
+}
+
+.box-3-course {
+	flex: 1;
+	font-size: 22px;
+	text-align: center;
+}
+
+.box-4-course {
+	flex: 1;
+	font-size: 22px;
+	text-align: center;
+}
+
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+	.box-1-up-tables {
+		font-size: 13px;
+	}
+	.box-2-up-tables {
+		font-size: 14px;
+	}
+	.box-3-up-tables {
+		font-size: 14px;
+	}
+	.box-4-up-tables {
+		font-size: 14px;	
+	}
+
+	.container-full-price {
+		display: flex;
+		align-items: stretch;
+		flex-direction: row;
+	}
+	.container-term-of-delay {
+		display: flex;
+		align-items: stretch;
+		flex-direction: row;		
+	}
+	.container-prepaid-expense {
+		display: flex;
+		align-items: stretch;
+		flex-direction: row;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.box-1-up-tables {
+		font-size: 14px;
+	}
+	.box-2-up-tables {
+		font-size: 14px;
+	}
+	.box-3-up-tables {
+		font-size: 14px;
+	}
+	.box-4-up-tables {
+		font-size: 14px;	
+	}
+
+	.container-full-price {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;
+	}
+	.container-term-of-delay {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;		
+	}
+	.container-prepaid-expense {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;
+	}
+}
+
+@media only screen and (min-width: 432px) and (max-width: 1024px) {
+	.box-1-up-tables {
+		font-size: 14px;
+	}
+	.box-2-up-tables {
+		font-size: 14px;
+	}
+	.box-3-up-tables {
+		font-size: 14px;
+	}
+	.box-4-up-tables {
+		font-size: 14px;	
+	}
+
+	.container-full-price {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;
+	}
+	.container-term-of-delay {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;		
+	}
+	.container-prepaid-expense {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	input[type="range"] {
+	    margin: auto;
+	    -webkit-appearance: none;
+	    position: relative;
+	    overflow: hidden;
+	    height: 60px;
+	    width: 100%;
+	    cursor: pointer;
+	    border-radius: 0;
+	}
+
+	.grey::-webkit-slider-thumb {
+	    -webkit-appearance: none;
+	    width: 40px; /* 1 */
+	    height: 60px;
+	    background: #fff;
+	    box-shadow: -100vw 0 0 100vw dodgerblue;
+	    border: 2px solid #999; /* 1 */
+	}
+
+	.box-1-scale {
+    	flex: 1;
+    	font-size: 45px;
+	}
+	.box-2-scale {
+    	flex: 1;
+    	font-size: 45px;
+	}
+	.box-3-scale {
+    	flex: 1;
+    	font-size: 45px;
+	}
+
+	input.value {
+    	height: 53px;
+    	font-size: 53px;
+    	border: 1px solid;
+    	width: 30%;
+    	border-color: #dddddd;
+	}
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+	.box-1-up-tables {
+		font-size: 14px;
+	}
+	.box-2-up-tables {
+		font-size: 14px;
+	}
+	.box-3-up-tables {
+		font-size: 14px;
+	}
+	.box-4-up-tables {
+		font-size: 14px;	
+	}
+
+	.container-full-price {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;
+	}
+	.container-term-of-delay {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;		
+	}
+	.container-prepaid-expense {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;
+	}
+}
+
+
+
+.form__select {
+    width: 100%;
+    height: 35px;
+    background-color: #fff;
+    position: relative;
+}
+
+.form__select:before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 33px;
+    background-color: #ccc;
+    pointer-events: none;
+    position: absolute;
+    top: 10px;
+    right: 35px;
+    z-index: 1;
+}
+
+.form__select:after {
+    content: "";
+    border-style: solid;
+    border-width: 5px 5px 0 5px;
+    border-color: #333 transparent transparent transparent;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    right: 17px;
+    z-index: 1;
+    margin-top: -2px;
+}
+
+.form__select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    background: none;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #000;
+}
+
+/* Убираем стандартные стрелочки в IE */
+.form__select select::-ms-expand {
+    display: none;
+}
+
+.form__select select:focus {
+    outline: 0;
+    border-color: #2cb0d8;
+}
+
+.form__select select:hover {
+    cursor: pointer;
+}

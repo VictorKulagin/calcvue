@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Calc</title>
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.min.js"></script>
+
+	<link rel="stylesheet" href="style.css">
+	<div class="container">
+		
+			<div id="app">
+				<div class="container-full-price">
+					<div class="box-1-scale">
+						<span>Полная цена:</span>
+					</div>
+					<div class="box-2-scale">
+						<input class="grey" type="range" min="1000000" max="4000000" step="1" v-model="valueFullPrice" v-on:keypress="noNumber">
+					</div>
+					<div class="box-3-scale">
+						<input type="number" class="value" v-model="valueFullPrice"/>{{ valueFullPriceValidator }} <span>руб.</span>
+					</div>	
+				</div>
+				<div class="container-term-of-delay">
+					<div class="box-1-scale">
+						<span>Срок отсрочки:</span>
+					</div>
+					<div class="box-2-scale">
+						<input class="grey" type="range" min="1" max="60" step="1" v-model="valueTermOfDelay">
+					</div>
+					<div class="box-3-scale">
+						<input type="number" class="value" v-model="valueTermOfDelay"/>{{ valueTermOfDelayValidator }} <span>мес.</span>
+					</div>	
+				</div>
+				<div class="container-prepaid-expense">
+					<div class="box-1-scale">
+						<span>Аванс:</span>
+					</div>
+					<div class="box-2-scale">
+						<input class="grey" type="range" min="10" max="50" step="1" v-model="valuePrepaidExpense">
+					</div>
+					<div class="box-3-scale">
+						<input type="number" class="value" v-model="valuePrepaidExpense"/>{{ valuePrepaidExpenseValidator }} <span>%</span>
+					</div>
+				</div>
+
+
+				<div class="container-course">
+					<div class="box-1-course">
+						<span v-text="dollarRate"></span>
+						<div class="form__select">
+							<select name="select" v-model='selected'>
+								<option v-for="option in options" v-bind:value="option.value">
+									{{ option.text }}
+								</option>
+							</select>
+						
+						</div>
+					</div>
+					<div class="box-2-course">
+						<span>Выбрано: {{ selected }}</span>
+					</div>
+					<div class="box-3-course">
+
+					</div>
+					<div class="box-4-course">
+						<span v-text="selectRate"></span>
+					</div>
+				</div>
+
+
+				<div class="container-up-tables" style="background-color: rgba(30, 144, 255, 0.5);">
+					<div class="box-1-up-tables">
+						<span class="total">График платежей</span>
+					</div>
+					<div class="box-2-up-tables">
+						<span class="total">Eжемесячный платеж без НДС</span>
+					</div>
+					<div class="box-3-up-tables">
+						<span class="total">НДС</span>
+					</div>
+					<div class="box-4-up-tables">
+						<span class="total">Ежемесячный платеж с НДС</span>
+					</div>
+				</div>
+				<div class="container-up-tables">
+					<div class="box-1-up-tables">
+						<ul v-for="n in valueTermOfDelay">
+							<li>{{ n }} <span>Месяц</span> </li>
+						</ul>
+					</div>
+					<div class="box-2-up-tables">
+						<ul v-for="n in valueTermOfDelay">
+							<li>{{ MonthlyPaymentWithoutVAT * selected }}</li>
+						</ul>
+					</div>
+					<div class="box-3-up-tables">
+						<ul v-for="n in valueTermOfDelay">
+							<li>{{ VAT * selected }}</li>
+						</ul>
+					</div>
+					<div class="box-4-up-tables">
+						<ul v-for="n in valueTermOfDelay">
+							<li>{{ MonthlyPaymentWithVAT * selected }}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="container-down-tables" style="background-color: rgba(30, 144, 255, 0.5);">
+					<div class="box-1-up-tables">
+						<span class="total">Итого </span>
+					</div>
+					<div class="box-2-up-tables">
+						<span class="total" v-text="SummMonthlyPaymentWithoutVAT * selected"></span>
+					</div>
+					<div class="box-3-up-tables">
+						<span class="total" v-text="SummVAT * selected"></span>
+					</div>
+					<div class="box-4-up-tables">
+						<span class="total" v-text="SummMonthlyPaymentWithVAT * selected"></span>
+					</div>
+				</div>
+			</div>		
+	</div>	
+	<script src="main.js"></script>
+</body>
+</html>
