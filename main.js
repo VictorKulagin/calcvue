@@ -16,20 +16,29 @@ new Vue ({
 		options: [
 			{text: 'Рубль', value: 1},
 			{text: 'Доллар', value: 2}
-		]
+		],
+
+		decimal: 0,
+    	separator: ' ',
+    	decpoint: '.',
+    	format_string: '#'
+    	//format_string: '# руб.'
 	},
 	methods: {
-	    noNumber() {
-	   	
-	   		
-	        	console.log('11');
-	      
-	    }
+		XFormatPrice (_number) {
+    		var r = parseFloat(_number)
+ 
+    		exp10 = Math.pow(10,this.decimal);// приводим к правильному множителю
+    		r = Math.round(r*exp10)/exp10;// округляем до необходимого числа знаков после запятой
+ 
+    		rr = Number(r).toFixed(this.decimal).toString().split('.');
+    		b = rr[0].replace(/(\d{1,3}(?=(\d{3})+(?:\.\d|\b)))/g,"\$1"+this.separator);
+ 
+    		r = (rr[1]?b+ this.decpoint + rr[1]:b);
+    		return this.format_string.replace('#', r);
+		}
   	},
 	computed: {
-	    total () {
-	    return this.valueFullPrice * 10
-	},
 	//Берём курс валют (доллар)
 	dollarRate () {
 		axios.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'http%3A%2F%2Fwww.cbr.ru%2Fscripts%2FXML_daily.asp%3F'&format=json&diagnostics=true&callback=").then(response => {

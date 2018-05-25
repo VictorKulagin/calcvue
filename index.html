@@ -17,7 +17,7 @@
 						<span>Полная цена:</span>
 					</div>
 					<div class="box-2-scale">
-						<input class="grey" type="range" min="1000000" max="4000000" step="1" v-model="valueFullPrice" v-on:keypress="noNumber">
+						<input class="grey" type="range" min="1000000" max="4000000" step="1" v-model="valueFullPrice">
 					</div>
 					<div class="box-3-scale">
 						<input type="number" class="value" v-model="valueFullPrice"/>{{ valueFullPriceValidator }} <span>руб.</span>
@@ -93,17 +93,17 @@
 					</div>
 					<div class="box-2-up-tables">
 						<ul v-for="n in valueTermOfDelay">
-							<li>{{ MonthlyPaymentWithoutVAT * selected }}</li>
+							<li>{{ XFormatPrice(MonthlyPaymentWithoutVAT * selected) }}</li>
 						</ul>
 					</div>
 					<div class="box-3-up-tables">
 						<ul v-for="n in valueTermOfDelay">
-							<li>{{ VAT * selected }}</li>
+							<li>{{ XFormatPrice(VAT * selected) }}</li>
 						</ul>
 					</div>
 					<div class="box-4-up-tables">
 						<ul v-for="n in valueTermOfDelay">
-							<li>{{ MonthlyPaymentWithVAT * selected }}</li>
+							<li>{{ XFormatPrice(MonthlyPaymentWithVAT * selected) }}</li>
 						</ul>
 					</div>
 				</div>
@@ -112,13 +112,13 @@
 						<span class="total">Итого </span>
 					</div>
 					<div class="box-2-up-tables">
-						<span class="total" v-text="SummMonthlyPaymentWithoutVAT * selected"></span>
+						<span class="total" v-text="XFormatPrice(SummMonthlyPaymentWithoutVAT * selected)"></span>
 					</div>
 					<div class="box-3-up-tables">
-						<span class="total" v-text="SummVAT * selected"></span>
+						<span class="total" v-text="XFormatPrice(SummVAT * selected)"></span>
 					</div>
 					<div class="box-4-up-tables">
-						<span class="total" v-text="SummMonthlyPaymentWithVAT * selected"></span>
+						<span class="total" v-text="XFormatPrice(SummMonthlyPaymentWithVAT * selected)"></span>
 					</div>
 				</div>
 			</div>		
