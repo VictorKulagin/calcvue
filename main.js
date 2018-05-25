@@ -1,5 +1,3 @@
-/*console.clear();*/
-
 new Vue ({
 	el: '#app',
 	data: {
@@ -28,8 +26,8 @@ new Vue ({
 		XFormatPrice (_number) {
     		var r = parseFloat(_number)
  
-    		exp10 = Math.pow(10,this.decimal);// приводим к правильному множителю
-    		r = Math.round(r*exp10)/exp10;// округляем до необходимого числа знаков после запятой
+    		exp10 = Math.pow(10,this.decimal);
+    		r = Math.round(r*exp10)/exp10;
  
     		rr = Number(r).toFixed(this.decimal).toString().split('.');
     		b = rr[0].replace(/(\d{1,3}(?=(\d{3})+(?:\.\d|\b)))/g,"\$1"+this.separator);
@@ -109,8 +107,8 @@ new Vue ({
 	//Ежемесячный платёж с НДС не пока долг с НДС
 	MonthlyPaymentWithVAT(){
 		this.valueTermOfDelay = Number(this.valueTermOfDelay);
-		DebtWithVAT = this.PrepaidExpenseValueFullPrice * 1.18;
-		return (this.MonthlyRate * (1 + this.MonthlyRate) ** this.valueTermOfDelay / ((1 + this.MonthlyRate) ** this.valueTermOfDelay - 1) * (DebtWithVAT * (this.valuePrepaidExpense / 100 * 10))).toFixed(2);
+		DebtWithVAT = this.valueFullPrice * 1.18;
+		return (this.MonthlyRate * (1 + this.MonthlyRate) ** this.valueTermOfDelay / ((1 + this.MonthlyRate) ** this.valueTermOfDelay - 1) * (DebtWithVAT - (this.valueFullPrice  * this.valuePrepaidExpense / 100))).toFixed(2);
 	},
 	//Сумма ежемесячного платежа с НДС
 	SummMonthlyPaymentWithVAT(){
